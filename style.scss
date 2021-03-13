@@ -1,0 +1,52 @@
+body {
+	background: linear-gradient(220deg, hsl(150, 50%, 30%), hsl(200, 50%, 30%), hsl(250, 50%, 30%));
+	background-size: 400% 400%;
+	animation: gradient 30s ease infinite;
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	font-family: "Montserrat", sans-serif;
+	min-height: 100vh;
+	color: white;
+	font-size: 1rem;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	border: 1px solid orange;
+}
+
+.options-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	justify-items: center;
+	column-gap: 1.5rem;
+}
+
+.squares-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	column-gap: 2rem;
+	row-gap: 2rem;
+}
+
+.square {
+	width: 100px;
+	height: 100px;
+	border-radius: 10%;
+	border: 2px solid red;
+}
