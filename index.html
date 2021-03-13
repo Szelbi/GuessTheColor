@@ -5,10 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <title>Guess the color!</title>
 </head>
 
 <body>
+    <div class="container">
+
+        <div class="title-container">
+            <h2>GUESS THE COLOR!</h2>
+        </div>
+
+        <div class="options-container">
+            <select name="squares-select" id="squares-select">
+                <option value="3-squares">3 Squares</option>
+                <option value="6-squares">6 Squares</option>
+                <option value="9-squares">9 Squares</option>
+            </select>
+            <select name="rounds-select" id="rounds-select">
+                <option value="5-rounds">5 Rounds</option>
+                <option value="10-rounds">10 Rounds</option>
+                <option value="20-rounds">20 Rounds</option>
+            </select>
+            <div class="play-button">
+                <button class="todo-btn todo-btn-add" type="submit">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </div>
+            <div class="time-container">30s</div>
+            <div class="score-container">8 pts!</div>
+        </div>
+
+        <div class="rgb-container">
+            <h2>RGB(120,30,80)</h2>
+        </div>
+
+        <div class="squares-container">
+            <div id=square-1 class="square"></div>
+            <div id=square-2 class="square"></div>
+            <div id=square-3 class="square"></div>
+            <div id=square-4 class="square"></div>
+            <div id=square-5 class="square"></div>
+            <div id=square-6 class="square"></div>
+        </div>
+
+    </div>
 
 </body>
 
