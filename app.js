@@ -2,35 +2,48 @@
 // Selectors
 const radioButtons = document.querySelectorAll(".radiobtn-input");
 const playButton = document.querySelector(".play-button");
+
 const squaresContainer = document.querySelector(".squares-container");
 
 //Event Listeners
-// playButton.addEventListener('click', alert1);
-document.addEventListener('DOMContentLoaded', renderSquares(3));
-for (i = 0; i < radioButtons.length; i++) {
-    radioButtons[i].addEventListener('click', checkType);
-}
+
+// document.addEventListener('DOMContentLoaded', renderSquares);
+// for (i = 0; i < radioButtons.length; i++) {
+//     radioButtons[i].addEventListener('click', checkOptions);
+// }
+playButton.addEventListener('click', play);
 
 // Variables
 
 let winningColor;
 
+let options = {
+    squares: checkOption('squares'),
+    rounds: checkOption('rounds')
+}
+
+let squares;
 
 // Functions
+function checkOption(option) {
 
-function checkType(event) {
+    let selector = `#${option}-filter`;
+    let filterOptions = document.querySelector(selector);
 
-    if (this.name === 'squares')
-        renderSquares(this.value);
+    for (i = 0; i < filterOptions.length; i++) {
+        if (filterOptions[i].checked === true)
+            return filterOptions[i].value;
+    }
+}
 
-    else if (this.name === 'rounds')
-        setRounds(this.value);
+function play() {
+    squares = checkOption('squares');
+    // alert(options.squares);
+    renderSquares();
 }
 
 
-function renderSquares(int) {
-
-    console.log('squares: ' + int);
+function renderSquares() {
 
     // myNode.removeChild(myNode.lastChild);
 
@@ -38,11 +51,11 @@ function renderSquares(int) {
         squaresContainer.removeChild(squaresContainer.lastChild);
     }
 
-    for (let i = 0; i < int; i++) {
+    for (let i = 0; i < options.squares; i++) {
         let square = document.createElement('div');
         // square.classList.add(`square-${i}`);
         square.setAttribute('id', `square-${i}`);
-        square.classList.add('square', 'square-correct');
+        square.classList.add('square');
         square.style.backgroundColor = getRandomRGB();
         square.addEventListener('click', checkWin);
         squaresContainer.appendChild(square);
@@ -90,10 +103,17 @@ function checkWin(event) {
     let squareRGB = square.style.backgroundColor;
 
     if (squareRGB === winingColor) {
-        alert('Dobrze!');
+        square.classList.add('square-correct');
+
+        setTimeout(function () {
+
+            renderSquares();
+
+        }, 1000);
+
     }
     else {
-        alert('Źle!');
+        square.classList.add('square-wrong');
     }
 
 }
