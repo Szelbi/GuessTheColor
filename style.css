@@ -241,3 +241,19 @@ h3 {
             transform: rotate(0deg);
   }
 }
+
+.squares-container .square-correct::after {
+  content: "\2714";
+  position: relative;
+  top: 0;
+  left: 25%;
+  font-size: 5rem;
+}
+
+.squares-container .square-wrong::after {
+  content: "\2718";
+  position: relative;
+  top: 0;
+  left: 25%;
+  font-size: 5rem;
+}

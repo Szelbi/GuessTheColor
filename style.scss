@@ -166,4 +166,19 @@ h3 {
 			}
 		}
 	}
+
+	.square-correct::after {
+		content: "\2714";
+		position: relative;
+		top: 0;
+		left: 25%;
+		font-size: 5rem;
+	}
+	.square-wrong::after {
+		content: "\2718";
+		position: relative;
+		top: 0;
+		left: 25%;
+		font-size: 5rem;
+	}
 }
