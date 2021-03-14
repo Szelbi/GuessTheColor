@@ -34,25 +34,33 @@ body {
 	background-color: hsl(152, 10%, 70%);
 }
 
+// .options-container {
+// 	text-align: center;
+// 	display: grid;
+// 	// grid-template-columns: 10vh repeat(5, minmax(100px, 1fr)) 10vh;
+// 	grid-template-columns: 300px repeat(5, minmax(100px, 1fr)) 300px;
+// 	// grid-template-columns: 20vw auto auto auto auto auto 20vw;
+// 	justify-items: center;
+// 	align-items: center;
+// 	align-content: center;
+// 	column-gap: 1.5rem;
+// }
+
 .options-container {
-	text-align: center;
-	display: grid;
-	// grid-template-columns: 10vh repeat(5, minmax(100px, 1fr)) 10vh;
-	grid-template-columns: repeat(5, minmax(100px, 1fr));
-	// grid-template-columns: 20vw auto auto auto auto auto 20vw;
-	justify-items: center;
+	display: flex;
+	gap: 30px;
 	align-items: center;
-	align-content: center;
-	column-gap: 1.5rem;
+	justify-content: center;
 }
 
-// .options-container {
-// 	display: flex;
-// 	gap: 30px;
-// 	flex: 1 1 30px;
-// 	align-items: center;
-// 	justify-content: center;
-// }
+.option-item {
+	// flex: 1 1 0;
+	// flex-grow: 1;
+	// flex-shrink: 1;
+	// flex-basis: 0;
+	min-width: 100px;
+	text-align: center;
+}
 
 .play-button {
 	padding: 1rem;

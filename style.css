@@ -55,19 +55,21 @@ body {
 }
 
 .options-container {
-  text-align: center;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(100px, 1fr))[5];
-      grid-template-columns: repeat(5, minmax(100px, 1fr));
-  justify-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-column-gap: 1.5rem;
-          column-gap: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.option-item {
+  min-width: 100px;
+  text-align: center;
 }
 
 .play-button {
