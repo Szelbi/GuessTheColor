@@ -5,7 +5,7 @@ body {
           animation: gradient 30s ease infinite;
   min-height: 100vh;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-family: "Inconsolata", monospace;
 }
 
@@ -47,17 +47,53 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid orange;
+}
+
+.options-bar {
+  width: 100vw;
+  background-color: #abbab3;
 }
 
 .options-container {
+  text-align: center;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-columns: (minmax(100px, 1fr))[5];
+      grid-template-columns: repeat(5, minmax(100px, 1fr));
   justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   -webkit-column-gap: 1.5rem;
           column-gap: 1.5rem;
+}
+
+.play-button {
+  padding: 1rem;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.play-button:focus {
+  outline: none;
+}
+
+.play-button .play-button-icon {
+  color: white;
+  font-size: 2rem;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.play-button .play-button-icon:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .squares-container {

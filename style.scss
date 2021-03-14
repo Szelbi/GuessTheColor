@@ -17,7 +17,7 @@ body {
 
 	min-height: 100vh;
 	color: white;
-	font-size: 1.5rem;
+	font-size: 1.7rem;
 	font-family: "Inconsolata", monospace;
 }
 
@@ -26,14 +26,53 @@ body {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	border: 1px solid orange;
+	// border: 1px solid orange;
+}
+
+.options-bar {
+	width: 100vw;
+	background-color: hsl(152, 10%, 70%);
 }
 
 .options-container {
+	text-align: center;
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	// grid-template-columns: 10vh repeat(5, minmax(100px, 1fr)) 10vh;
+	grid-template-columns: repeat(5, minmax(100px, 1fr));
+	// grid-template-columns: 20vw auto auto auto auto auto 20vw;
 	justify-items: center;
+	align-items: center;
+	align-content: center;
 	column-gap: 1.5rem;
+}
+
+// .options-container {
+// 	display: flex;
+// 	gap: 30px;
+// 	flex: 1 1 30px;
+// 	align-items: center;
+// 	justify-content: center;
+// }
+
+.play-button {
+	padding: 1rem;
+	background-color: transparent;
+	outline: none;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+
+	.play-button-icon {
+		color: white;
+		font-size: 2rem;
+		transition: transform 0.5s;
+		&:hover {
+			cursor: pointer;
+			transform: scale(1.5);
+		}
+	}
 }
 
 .squares-container {
