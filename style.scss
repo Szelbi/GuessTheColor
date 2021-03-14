@@ -111,10 +111,11 @@ h3 {
 		.play-button-icon {
 			color: $primary-color;
 			font-size: 2rem;
-			transition: transform 0.3s;
+			transition: all 0.3s ease;
 			&:hover {
 				cursor: pointer;
 				transform: scale(1.5);
+				// color: rgb(0, 219, 0);
 			}
 		}
 	}
