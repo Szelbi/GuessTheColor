@@ -1,4 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
+* {
+	padding: 0;
+	box-sizing: border-box;
+	border: 0;
+}
+
 body {
+	margin: 0;
 	background: linear-gradient(220deg, hsl(150, 50%, 30%), hsl(200, 50%, 30%), hsl(250, 50%, 30%));
 	background-size: 400% 400%;
 	animation: gradient 30s ease infinite;
@@ -30,7 +38,7 @@ body {
 }
 
 .options-bar {
-	width: 100vw;
+	width: 100%;
 	background-color: hsl(152, 10%, 70%);
 }
 
@@ -51,34 +59,39 @@ body {
 	gap: 30px;
 	align-items: center;
 	justify-content: center;
-}
 
-.option-item {
-	// flex: 1 1 0;
-	// flex-grow: 1;
-	// flex-shrink: 1;
-	// flex-basis: 0;
-	min-width: 100px;
-	text-align: center;
-}
-
-.play-button {
-	padding: 1rem;
-	background-color: transparent;
-	outline: none;
-	border: none;
-
-	&:focus {
-		outline: none;
+	& > ul {
+		list-style: none;
+		display: grid;
+		grid-auto-flow: column;
+		grid-area: nav;
 	}
 
-	.play-button-icon {
-		color: white;
-		font-size: 2rem;
-		transition: transform 0.5s;
-		&:hover {
-			cursor: pointer;
-			transform: scale(1.5);
+	.option-item {
+		min-width: 100px;
+		text-align: center;
+		border: 1px solid black;
+		height: 100%;
+
+		.play-button {
+			padding: 1rem;
+			background-color: transparent;
+			outline: none;
+			border: none;
+
+			&:focus {
+				outline: none;
+			}
+
+			.play-button-icon {
+				color: white;
+				font-size: 2rem;
+				transition: transform 0.5s;
+				&:hover {
+					cursor: pointer;
+					transform: scale(1.5);
+				}
+			}
 		}
 	}
 }
@@ -89,11 +102,11 @@ body {
 	grid-template-rows: 1fr 1fr 1fr;
 	column-gap: 2rem;
 	row-gap: 2rem;
-}
 
-.square {
-	width: 100px;
-	height: 100px;
-	border-radius: 10%;
-	border: 2px solid red;
+	.square {
+		width: 100px;
+		height: 100px;
+		border-radius: 10%;
+		border: 2px solid red;
+	}
 }
