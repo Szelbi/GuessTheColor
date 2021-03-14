@@ -18,27 +18,44 @@
         <div class="title-container">
             <h1>GUESS THE COLOR!</h1>
         </div>
+
         <div class="options-bar">
             <div class="options-container">
                 <ul>
                     <!-- <div></div> -->
                     <li>
-                        <div class="option-item">
-                            <select name="squares-select option-item" id="squares-select">
-                                <option value="3-squares">3 Squares</option>
-                                <option value="6-squares">6 Squares</option>
-                                <option value="9-squares">9 Squares</option>
-                            </select>
-                        </div>
+                        <form class="option-item filter-container">
+                            <div class="radiobtn">
+                                <input class="radiobtn-input" type="radio" id="3sq" name="drone" value="3sq" checked />
+                                <label for="3sq">3 squares</label>
+                            </div>
+
+                            <div class="radiobtn">
+                                <input class="radiobtn-input" type="radio" id="6sq" name="drone" value="6sq" />
+                                <label for="6sq">6 squares</label>
+                            </div>
+                            <div class="radiobtn">
+                                <input class="radiobtn-input" type="radio" id="9sq" name="drone" value="9sq" />
+                                <label for="9sq">9 squares</label>
+                            </div>
+                        </form>
                     </li>
                     <li>
-                        <div class="option-item">
-                            <select name="rounds-select" id="rounds-select">
-                                <option value="5-rounds">5 Rounds</option>
-                                <option value="10-rounds">10 Rounds</option>
-                                <option value="20-rounds">20 Rounds</option>
-                            </select>
-                        </div>
+                        <form class="option-item filter-container">
+                            <div class="radiobtn">
+                                <input class="radiobtn-input" type="radio" id="5r" name="drone" value="5r" checked />
+                                <label for="5r">5 rounds</label>
+                            </div>
+
+                            <div class="radiobtn">
+                                <input class="radiobtn-input" type="radio" id="10r" name="drone" value="10r" />
+                                <label for="10r">10 rounds</label>
+                            </div>
+                            <div class="radiobtn">
+                                <input class="radiobtn-input" type="radio" id="20r" name="drone" value="20r" />
+                                <label for="20r">20 rounds</label>
+                            </div>
+                        </form>
                     </li>
                     <li>
                         <div class="play-button-container option-item">
@@ -74,7 +91,6 @@
             <div id=square-5 class="square"></div>
             <div id=square-6 class="square"></div>
         </div>
-
     </div>
 
 </body>
