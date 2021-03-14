@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
 
+$primary-color: #fffe;
+
 * {
 	padding: 0;
 	box-sizing: border-box;
@@ -25,7 +27,7 @@ body {
 	}
 
 	min-height: 100vh;
-	color: white;
+	color: $primary-color;
 	font-size: 1.7rem;
 	font-family: "Inconsolata", monospace;
 }
@@ -86,7 +88,7 @@ h3 {
 		}
 
 		.play-button-icon {
-			color: white;
+			color: $primary-color;
 			font-size: 2rem;
 			transition: transform 0.5s;
 			&:hover {
@@ -113,7 +115,51 @@ h3 {
 		width: 120px;
 		height: 120px;
 		border-radius: 10%;
-		// border: 2px solid red;
 		box-shadow: 0 0 15px 9px #2224;
+	}
+}
+
+.filter-container {
+	display: flex;
+	flex-direction: column;
+	// align-items: center;
+	// justify-content: space-between;
+	// flex: 1 1 0px;
+	// flex-basis: auto;
+	// flex-grow: 1;
+	// flex-basis: 0;
+	// margin: 2rem 0;
+}
+
+.radiobtn {
+	label {
+		width: 100%;
+		font-size: 1.2rem;
+		// padding: 0.6rem 1.2rem;
+		cursor: pointer;
+		// color: $primary-color;
+		color: transparentize(white, 0.7);
+		// background: transparentize($primary-color, 0.5);
+
+		transition: all 0.3s ease;
+
+		&:hover {
+			color: $primary-color;
+			transform: scale(1.5);
+		}
+		&:checked + label {
+			color: $primary-color;
+		}
+	}
+	input[type="radio"] {
+		display: none;
+		appearance: none;
+		&:checked + label {
+			transition: all 0.3s ease;
+			font-weight: bold;
+			border: $primary-color;
+			font-size: 1.4rem;
+			color: $primary-color !important;
+		}
 	}
 }

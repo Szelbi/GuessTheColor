@@ -13,7 +13,7 @@ body {
   -webkit-animation: gradient 30s ease infinite;
           animation: gradient 30s ease infinite;
   min-height: 100vh;
-  color: white;
+  color: #fffe;
   font-size: 1.7rem;
   font-family: "Inconsolata", monospace;
 }
@@ -112,7 +112,7 @@ h3 {
 }
 
 .options-container .play-button .play-button-icon {
-  color: white;
+  color: #fffe;
   font-size: 2rem;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
@@ -149,4 +149,49 @@ h3 {
   border-radius: 10%;
   -webkit-box-shadow: 0 0 15px 9px #2224;
           box-shadow: 0 0 15px 9px #2224;
+}
+
+.filter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.radiobtn label {
+  width: 100%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.radiobtn label:hover {
+  color: #fffe;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.radiobtn label:checked + label {
+  color: #fffe;
+}
+
+.radiobtn input[type="radio"] {
+  display: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.radiobtn input[type="radio"]:checked + label {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  border: #fffe;
+  font-size: 1.4rem;
+  color: #fffe !important;
 }
