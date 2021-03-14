@@ -6,6 +6,7 @@ const squaresContainer = document.querySelector(".squares-container");
 
 //Event Listeners
 playButton.addEventListener('click', alert1);
+document.addEventListener('DOMContentLoaded', renderSquares(3));
 for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener('click', checkType);
 }
@@ -29,6 +30,7 @@ function checkType(event) {
 
 
 function renderSquares(int) {
+
     console.log('squares: ' + int);
 
     // myNode.removeChild(myNode.lastChild);
@@ -42,15 +44,44 @@ function renderSquares(int) {
         // square.classList.add(`square-${i}`);
         square.setAttribute('id', `square-${i}`);
         square.setAttribute('class', 'square');
+        square.style.backgroundColor = getRandomRGB();
+        // square.style.backgroundColor = "red";
         squaresContainer.appendChild(square);
-
     }
 
+    setWiningColor();
+}
 
+function setWiningColor() {
+
+    let squares = squaresContainer.children;
+    let count = squaresContainer.childElementCount;
+    let int = getRandomInt(0, count - 1);
+    let rgb = squares[int].style.backgroundColor;
+
+    let header = document.querySelector("#rgb-result");
+    header.innerHTML = rgb;
+    console.log(rgb);
 }
 
 
 function setRounds(int) {
     console.log('rounds: ' + int);
+}
 
+function getRandomRGB() {
+
+    let min = 0;
+    let max = 255;
+    let red = getRandomInt(min, max);
+    let green = getRandomInt(min, max);
+    let blue = getRandomInt(min, max);
+
+    return `rgb(${red}, ${green}, ${blue})`
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
