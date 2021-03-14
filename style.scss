@@ -138,5 +138,32 @@ h3 {
 		height: 120px;
 		border-radius: 10%;
 		box-shadow: 0 0 15px 9px #2224;
+		// transition: all 0.3s ease;
+		&:hover {
+			// transform: scale(1.1);
+			cursor: pointer;
+			animation: shake 0.5s linear;
+		}
+
+		@keyframes shake {
+			0% {
+				transform: rotate(0deg);
+			}
+			20% {
+				transform: scale(1.1) rotate(5deg);
+			}
+			40% {
+				transform: scale(1.2) rotate(-5deg);
+			}
+			60% {
+				transform: scale(1.2) rotate(5deg);
+			}
+			80% {
+				transform: scale(1.1) rotate(-5deg);
+			}
+			100% {
+				transform: rotate(0deg);
+			}
+		}
 	}
 }

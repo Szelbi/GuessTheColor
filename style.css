@@ -181,3 +181,63 @@ h3 {
   -webkit-box-shadow: 0 0 15px 9px #2224;
           box-shadow: 0 0 15px 9px #2224;
 }
+
+.squares-container .square:hover {
+  cursor: pointer;
+  -webkit-animation: shake 0.5s linear;
+          animation: shake 0.5s linear;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  20% {
+    -webkit-transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1) rotate(5deg);
+  }
+  40% {
+    -webkit-transform: scale(1.2) rotate(-5deg);
+            transform: scale(1.2) rotate(-5deg);
+  }
+  60% {
+    -webkit-transform: scale(1.2) rotate(5deg);
+            transform: scale(1.2) rotate(5deg);
+  }
+  80% {
+    -webkit-transform: scale(1.1) rotate(-5deg);
+            transform: scale(1.1) rotate(-5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  20% {
+    -webkit-transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1) rotate(5deg);
+  }
+  40% {
+    -webkit-transform: scale(1.2) rotate(-5deg);
+            transform: scale(1.2) rotate(-5deg);
+  }
+  60% {
+    -webkit-transform: scale(1.2) rotate(5deg);
+            transform: scale(1.2) rotate(5deg);
+  }
+  80% {
+    -webkit-transform: scale(1.1) rotate(-5deg);
+            transform: scale(1.1) rotate(-5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
