@@ -158,7 +158,7 @@ h3 {
 }
 
 .rgb-container {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .squares-container {
@@ -171,7 +171,7 @@ h3 {
   -webkit-column-gap: 2rem;
           column-gap: 2rem;
   row-gap: 2rem;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .squares-container .square {
