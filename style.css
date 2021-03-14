@@ -4,10 +4,10 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 0;
+  margin: 0;
 }
 
 body {
-  margin: 0;
   background: linear-gradient(220deg, #26734d, #265973, #332673);
   background-size: 400% 400%;
   -webkit-animation: gradient 30s ease infinite;
@@ -42,6 +42,12 @@ body {
   }
 }
 
+h1,
+h2,
+h3 {
+  margin: 0.5em 0;
+}
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -58,19 +64,10 @@ body {
           flex-direction: column;
 }
 
-.options-bar {
-  width: 100%;
-  background-color: #abbab3;
-}
-
 .options-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 30px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -78,31 +75,43 @@ body {
 
 .options-container > ul {
   list-style: none;
+  margin: 0.3rem;
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
-  grid-area: nav;
+  -ms-grid-columns: (minmax(auto, 150px))[5];
+      grid-template-columns: repeat(5, minmax(auto, 150px));
+  grid-gap: 1em;
 }
 
 .options-container .option-item {
-  min-width: 100px;
-  text-align: center;
-  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 0 15px 9px #2224;
+          box-shadow: 0 0 15px 9px #2224;
+  padding: 0.3em;
   height: 100%;
 }
 
-.options-container .option-item .play-button {
+.options-container .play-button {
   padding: 1rem;
   background-color: transparent;
   outline: none;
   border: none;
 }
 
-.options-container .option-item .play-button:focus {
+.options-container .play-button:focus {
   outline: none;
 }
 
-.options-container .option-item .play-button .play-button-icon {
+.options-container .play-button .play-button-icon {
   color: white;
   font-size: 2rem;
   -webkit-transition: -webkit-transform 0.5s;
@@ -111,10 +120,14 @@ body {
   transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
-.options-container .option-item .play-button .play-button-icon:hover {
+.options-container .play-button .play-button-icon:hover {
   cursor: pointer;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
+}
+
+.rgb-container {
+  padding: 2rem 0;
 }
 
 .squares-container {
@@ -127,11 +140,13 @@ body {
   -webkit-column-gap: 2rem;
           column-gap: 2rem;
   row-gap: 2rem;
+  padding: 2rem;
 }
 
 .squares-container .square {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 10%;
-  border: 2px solid red;
+  -webkit-box-shadow: 0 0 15px 9px #2224;
+          box-shadow: 0 0 15px 9px #2224;
 }

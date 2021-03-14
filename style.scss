@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
+
 * {
 	padding: 0;
 	box-sizing: border-box;
 	border: 0;
+	margin: 0;
 }
 
 body {
-	margin: 0;
 	background: linear-gradient(220deg, hsl(150, 50%, 30%), hsl(200, 50%, 30%), hsl(250, 50%, 30%));
 	background-size: 400% 400%;
 	animation: gradient 30s ease infinite;
@@ -29,6 +30,12 @@ body {
 	font-family: "Inconsolata", monospace;
 }
 
+h1,
+h2,
+h3 {
+	margin: 0.5em 0;
+}
+
 .container {
 	display: flex;
 	align-items: center;
@@ -37,63 +44,61 @@ body {
 	// border: 1px solid orange;
 }
 
-.options-bar {
-	width: 100%;
-	background-color: hsl(152, 10%, 70%);
-}
-
-// .options-container {
-// 	text-align: center;
-// 	display: grid;
-// 	// grid-template-columns: 10vh repeat(5, minmax(100px, 1fr)) 10vh;
-// 	grid-template-columns: 300px repeat(5, minmax(100px, 1fr)) 300px;
-// 	// grid-template-columns: 20vw auto auto auto auto auto 20vw;
-// 	justify-items: center;
-// 	align-items: center;
-// 	align-content: center;
-// 	column-gap: 1.5rem;
+// .options-bar {
+// 	width: 100%;
+// 	background-color: hsl(152, 10%, 70%);
 // }
 
 .options-container {
 	display: flex;
-	gap: 30px;
-	align-items: center;
 	justify-content: center;
 
 	& > ul {
 		list-style: none;
+		margin: 0.3rem;
 		display: grid;
 		grid-auto-flow: column;
-		grid-area: nav;
+		grid-template-columns: repeat(5, minmax(auto, 150px));
+		grid-gap: 1em;
+		// padding: 1em; /* NEW */
 	}
 
 	.option-item {
-		min-width: 100px;
-		text-align: center;
-		border: 1px solid black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// min-width: 80px;
+		// border: 1px solid black;
+		box-shadow: 0 0 15px 9px #2224;
+		padding: 0.3em;
 		height: 100%;
+	}
 
-		.play-button {
-			padding: 1rem;
-			background-color: transparent;
+	.play-button {
+		padding: 1rem;
+		background-color: transparent;
+		outline: none;
+		border: none;
+
+		&:focus {
 			outline: none;
-			border: none;
+		}
 
-			&:focus {
-				outline: none;
-			}
-
-			.play-button-icon {
-				color: white;
-				font-size: 2rem;
-				transition: transform 0.5s;
-				&:hover {
-					cursor: pointer;
-					transform: scale(1.5);
-				}
+		.play-button-icon {
+			color: white;
+			font-size: 2rem;
+			transition: transform 0.5s;
+			&:hover {
+				cursor: pointer;
+				transform: scale(1.5);
 			}
 		}
 	}
+}
+
+.rgb-container {
+	padding: 2rem 0;
 }
 
 .squares-container {
@@ -102,11 +107,13 @@ body {
 	grid-template-rows: 1fr 1fr 1fr;
 	column-gap: 2rem;
 	row-gap: 2rem;
+	padding: 2rem;
 
 	.square {
-		width: 100px;
-		height: 100px;
+		width: 120px;
+		height: 120px;
 		border-radius: 10%;
-		border: 2px solid red;
+		// border: 2px solid red;
+		box-shadow: 0 0 15px 9px #2224;
 	}
 }
