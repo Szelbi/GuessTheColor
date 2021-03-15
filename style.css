@@ -100,6 +100,10 @@ h3 {
   height: 100%;
 }
 
+.options-container .option-item > span {
+  padding-left: 0.4rem;
+}
+
 .options-container .filter-container {
   display: -webkit-box;
   display: -ms-flexbox;

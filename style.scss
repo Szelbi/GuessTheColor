@@ -72,6 +72,10 @@ h3 {
 		box-shadow: 0 0 15px 9px #2224;
 		padding: 0.3em;
 		height: 100%;
+
+		& > span {
+			padding-left: 0.4rem;
+		}
 	}
 
 	.filter-container {
