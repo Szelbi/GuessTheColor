@@ -104,11 +104,10 @@ function checkWin(event) {
 
         // square.addEventListener('animationend', () => {
 
-        let squareRGB = square.style.backgroundColor;
-
-        if (squareRGB === winingColor) {
+        if (square.style.backgroundColor === winingColor) {
 
             square.classList.add('square-correct');
+            addPoint();
             disableSquares();
 
             setTimeout(function () {
@@ -132,6 +131,11 @@ function getSeconds() {
 function getPoints() {
     let elem = document.querySelector('#points');
     return Number(elem.innerHTML);
+}
+
+function addPoint() {
+    let elem = document.querySelector('#points');
+    elem.innerHTML = Number(elem.innerHTML) + 1;
 }
 
 function disableSquares() {
