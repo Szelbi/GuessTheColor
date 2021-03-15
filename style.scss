@@ -149,7 +149,7 @@ h3 {
 		&:hover {
 			// transform: scale(1.1);
 			cursor: pointer;
-			animation: shake 0.5s linear;
+			animation: shake 0.3s linear;
 		}
 
 		@keyframes shake {

@@ -188,8 +188,8 @@ h3 {
 
 .squares-container .square-active:hover {
   cursor: pointer;
-  -webkit-animation: shake 0.5s linear;
-          animation: shake 0.5s linear;
+  -webkit-animation: shake 0.3s linear;
+          animation: shake 0.3s linear;
 }
 
 @-webkit-keyframes shake {
