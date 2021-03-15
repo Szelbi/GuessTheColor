@@ -8,9 +8,9 @@ const squaresContainer = document.querySelector(".squares-container");
 //Event Listeners
 
 // document.addEventListener('DOMContentLoaded', renderSquares);
-// for (i = 0; i < radioButtons.length; i++) {
-//     radioButtons[i].addEventListener('click', checkOptions);
-// }
+for (i = 0; i < radioButtons.length; i++) {
+    radioButtons[i].addEventListener('click', updateOptions);
+}
 playButton.addEventListener('click', play);
 
 // Variables
@@ -18,8 +18,8 @@ playButton.addEventListener('click', play);
 let winningColor;
 
 let options = {
-    squares: checkOption('squares'),
-    rounds: checkOption('rounds')
+    squares: 3,
+    rounds: 5
 }
 
 let squares;
@@ -36,8 +36,12 @@ function checkOption(option) {
     }
 }
 
+function updateOptions() {
+    options.squares = checkOption('squares');
+    options.rounds = checkOption('rounds');
+}
+
 function play() {
-    squares = checkOption('squares');
     // alert(options.squares);
     renderSquares();
 }
@@ -106,9 +110,7 @@ function checkWin(event) {
         square.classList.add('square-correct');
 
         setTimeout(function () {
-
             renderSquares();
-
         }, 1000);
 
     }
