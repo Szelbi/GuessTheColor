@@ -59,7 +59,7 @@ function renderSquares() {
         let square = document.createElement('div');
         // square.classList.add(`square-${i}`);
         square.setAttribute('id', `square-${i}`);
-        square.classList.add('square');
+        square.classList.add('square', 'square-active');
         square.style.backgroundColor = getRandomRGB();
         square.addEventListener('click', checkWin);
         squaresContainer.appendChild(square);
@@ -77,11 +77,6 @@ function setWiningColor() {
 
     let header = document.querySelector("#rgb-result");
     header.innerHTML = winingColor;
-}
-
-
-function setRounds(int) {
-    console.log('rounds: ' + int);
 }
 
 function getRandomRGB() {
@@ -104,18 +99,28 @@ function getRandomInt(min, max) {
 
 function checkWin(event) {
     let square = this;
-    let squareRGB = square.style.backgroundColor;
 
-    if (squareRGB === winingColor) {
-        square.classList.add('square-correct');
+    if (square.classList.contains('square-active')) {
 
-        setTimeout(function () {
-            renderSquares();
-        }, 1000);
+        // square.addEventListener('animationend', () => {
 
-    }
-    else {
-        square.classList.add('square-wrong');
+        let squareRGB = square.style.backgroundColor;
+
+        if (squareRGB === winingColor) {
+
+            square.classList.add('square-correct');
+            disableSquares();
+
+            setTimeout(function () {
+                renderSquares();
+            }, 1000);
+
+        }
+        else {
+            square.classList.remove('square-active');
+            square.classList.add('square-wrong');
+        }
+        // })
     }
 }
 
@@ -127,4 +132,16 @@ function getSeconds() {
 function getPoints() {
     let elem = document.querySelector('#points');
     return Number(elem.innerHTML);
+}
+
+function disableSquares() {
+    let squares = document.querySelectorAll('.square');
+
+    /**
+     * document.querySelectorAll returns NodeList but to iterate for it using foreach I need 
+     * to convert the NodeList to array. Array.from(squares) is the function I need
+     */
+    Array.from(squares).forEach(square => {
+        square.classList.remove('square-active');
+    });
 }
