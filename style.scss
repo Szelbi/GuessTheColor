@@ -143,6 +143,9 @@ h3 {
 		border-radius: 10%;
 		box-shadow: 0 0 15px 9px #2224;
 		// transition: all 0.3s ease;
+	}
+
+	.square-active {
 		&:hover {
 			// transform: scale(1.1);
 			cursor: pointer;

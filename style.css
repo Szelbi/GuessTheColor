@@ -186,7 +186,7 @@ h3 {
           box-shadow: 0 0 15px 9px #2224;
 }
 
-.squares-container .square:hover {
+.squares-container .square-active:hover {
   cursor: pointer;
   -webkit-animation: shake 0.5s linear;
           animation: shake 0.5s linear;
