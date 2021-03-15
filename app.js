@@ -117,5 +117,14 @@ function checkWin(event) {
     else {
         square.classList.add('square-wrong');
     }
+}
 
+function getSeconds() {
+    let elem = document.querySelector('#seconds');
+    return Number(elem.innerHTML);
+}
+
+function getPoints() {
+    let elem = document.querySelector('#points');
+    return Number(elem.innerHTML);
 }
