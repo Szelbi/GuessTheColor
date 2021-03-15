@@ -146,27 +146,26 @@ h3 {
 	}
 
 	.square-active {
+		// transition: transform 0.3s ease-in-out;
 		&:hover {
 			// transform: scale(1.1);
 			cursor: pointer;
 			animation: shake 0.3s linear;
+			// transform: rotate(90deg);
 		}
 
 		@keyframes shake {
 			0% {
 				transform: rotate(0deg);
 			}
-			20% {
+			25% {
 				transform: scale(1.1) rotate(5deg);
 			}
-			40% {
+			50% {
 				transform: scale(1.2) rotate(-5deg);
 			}
-			60% {
+			75% {
 				transform: scale(1.2) rotate(5deg);
-			}
-			80% {
-				transform: scale(1.1) rotate(-5deg);
 			}
 			100% {
 				transform: rotate(0deg);
