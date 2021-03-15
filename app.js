@@ -116,6 +116,7 @@ function checkWin(event) {
 
         }
         else {
+            substractPoint()
             square.classList.remove('square-active');
             square.classList.add('square-wrong');
         }
@@ -131,6 +132,11 @@ function getSeconds() {
 function getPoints() {
     let elem = document.querySelector('#points');
     return Number(elem.innerHTML);
+}
+
+function substractPoint() {
+    let elem = document.querySelector('#points');
+    elem.innerHTML = Number(elem.innerHTML) - 1;
 }
 
 function addPoint() {
