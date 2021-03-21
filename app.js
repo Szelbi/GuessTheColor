@@ -23,7 +23,8 @@ let winningColor;
 
 let options = {
     squares: 3,
-    rounds: 5
+    rounds: 10,
+    seconds: 10,
 }
 
 let squares;
@@ -43,6 +44,7 @@ function checkOption(option) {
 function updateOptions() {
     options.squares = checkOption('squares');
     options.rounds = checkOption('rounds');
+    options.seconds = checkOption('seconds');
 }
 
 function play() {
