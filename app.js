@@ -1,20 +1,18 @@
-
 // Selectors
 const radioButtons = document.querySelectorAll(".radiobtn-input");
 const playButton = document.querySelector(".play-button");
 
 const squaresContainer = document.querySelector(".squares-container");
 
-//Event Listeners
 
-// document.addEventListener('DOMContentLoaded', renderSquares);
+//Event Listeners
 for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener('click', updateOptions);
 }
 playButton.addEventListener('click', play);
 
-// Variables
 
+// Variables
 let defaultSeconds = 10;
 
 let counter;
@@ -25,9 +23,9 @@ let options = {
     squares: 3,
     rounds: 10,
     seconds: 10,
+    play: 'off'
 }
 
-let squares;
 
 // Functions
 function checkOption(option) {
@@ -48,15 +46,19 @@ function updateOptions() {
 }
 
 function play() {
+    setAllRounds();
+    newRound();
+}
+
+function newRound() {
+    addRound();
+    resetTimer();
     renderSquares();
+    setWiningColor();
 }
 
 
 function renderSquares() {
-
-    resetTimer();
-
-    // myNode.removeChild(myNode.lastChild);
 
     while (squaresContainer.hasChildNodes()) {
         squaresContainer.removeChild(squaresContainer.lastChild);
@@ -71,8 +73,6 @@ function renderSquares() {
         square.addEventListener('click', checkWin);
         squaresContainer.appendChild(square);
     }
-
-    setWiningColor();
 }
 
 function setWiningColor() {
@@ -139,9 +139,9 @@ function substractPoint() {
     let points = document.querySelector('#points');
     points.innerHTML = Number(points.innerHTML) - 1;
     points.classList.add('poft-animate');
-    points.addEventListener('animationend', () => {
-        points.classList.remove('point-animate');
-    });
+    // points.addEventListener('animationend', () => {
+    points.classList.remove('point-animate');
+    // });
 
 }
 
@@ -149,10 +149,10 @@ function addPoint() {
     let points = document.querySelector('#points');
     points.innerHTML = Number(points.innerHTML) + 1;
     points.classList.add('point-animate');
-    points.addEventListener('animationend', () => {
-        points.classList.remove('point-animate');
-        renderSquares();
-    });
+    // points.addEventListener('animationend', () => {
+    points.classList.remove('point-animate');
+    newRound();
+    // });
 
 }
 
@@ -181,9 +181,22 @@ function resetTimer() {
         sec--;
         elem.innerHTML = sec;
         if (sec == 0) {
-            substractPoint()
-            renderSquares();
+            substractPoint();
+            newRound();
         }
 
     }, 1000);
+}
+
+function setAllRounds() {
+    let allRounds = document.getElementById("rounds-all");
+    allRounds.innerHTML = options.rounds;
+}
+
+
+function addRound() {
+    // new round
+    let nowRound = document.getElementById("rounds-now");
+    nowRound.innerHTML = Number(nowRound.innerHTML) + 1;
+
 }
