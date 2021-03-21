@@ -184,9 +184,9 @@ function resetTimer() {
     clearInterval(counter);
 
     let elem = document.getElementById("seconds");
-    elem.innerHTML = defaultSeconds;
+    elem.innerHTML = options.seconds;
 
-    sec = defaultSeconds;
+    sec = options.seconds;
 
     counter = setInterval(function () {
         sec--;
