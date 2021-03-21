@@ -99,21 +99,29 @@ h3 {
   margin: 0.3rem;
   display: -ms-grid;
   display: grid;
+  grid-gap: 1rem;
   grid-auto-flow: column;
   -ms-grid-columns: (minmax(auto, 150px))[7];
       grid-template-columns: repeat(7, minmax(auto, 150px));
-  grid-gap: 1rem;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+      grid-template-areas: ". . ." "none . none" ". . .";
 }
 
 @media (max-width: 900px) {
   .options-container > ul {
-    grid-gap: 0.5em;
+    grid-auto-flow: row;
+    -ms-grid-columns: (minmax(auto, 6rem))[3];
+        grid-template-columns: repeat(3, minmax(auto, 6rem));
+    -ms-grid-rows: (minmax(auto, 4rem))[3];
+        grid-template-rows: repeat(3, minmax(auto, 4rem));
+        grid-template-areas: "squares-f rounds-f seconds-f" ". play ." "seconds points rounds";
   }
 }
 
 @media (max-width: 600px) {
   .options-container > ul {
-    grid-gap: 0.3em;
+    grid-gap: 0.7em;
   }
 }
 
