@@ -135,8 +135,12 @@ function getPoints() {
 }
 
 function substractPoint() {
-    let elem = document.querySelector('#points');
-    elem.innerHTML = Number(elem.innerHTML) - 1;
+    let points = document.querySelector('#points');
+    points.innerHTML = Number(points.innerHTML) - 1;
+    points.classList.add('poft-animate');
+    points.addEventListener('animationend', () => {
+        points.classList.remove('point-animate');
+    });
 }
 
 function addPoint() {
