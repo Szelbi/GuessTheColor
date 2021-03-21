@@ -140,10 +140,12 @@ function substractPoint() {
 }
 
 function addPoint() {
-    let elem = document.querySelector('#points');
-    elem.classList.add
-    elem.innerHTML = Number(elem.innerHTML) + 1;
-
+    let points = document.querySelector('#points');
+    points.innerHTML = Number(points.innerHTML) + 1;
+    points.classList.add('point-animate');
+    points.addEventListener('animationend', () => {
+        points.classList.remove('point-animate');
+    });
 }
 
 function disableSquares() {
