@@ -15,6 +15,10 @@ playButton.addEventListener('click', play);
 
 // Variables
 
+let defaultSeconds = 10;
+
+let counter;
+
 let winningColor;
 
 let options = {
@@ -42,12 +46,13 @@ function updateOptions() {
 }
 
 function play() {
-    // alert(options.squares);
     renderSquares();
 }
 
 
 function renderSquares() {
+
+    resetTimer();
 
     // myNode.removeChild(myNode.lastChild);
 
@@ -102,17 +107,12 @@ function checkWin(event) {
 
     if (square.classList.contains('square-active')) {
 
-        // square.addEventListener('animationend', () => {
 
         if (square.style.backgroundColor === winingColor) {
 
             square.classList.add('square-correct');
-            addPoint();
             disableSquares();
-
-            setTimeout(function () {
-                renderSquares();
-            }, 1000);
+            addPoint();
 
         }
         else {
@@ -120,7 +120,6 @@ function checkWin(event) {
             square.classList.remove('square-active');
             square.classList.add('square-wrong');
         }
-        // })
     }
 }
 
@@ -141,6 +140,7 @@ function substractPoint() {
     points.addEventListener('animationend', () => {
         points.classList.remove('point-animate');
     });
+
 }
 
 function addPoint() {
@@ -149,7 +149,9 @@ function addPoint() {
     points.classList.add('point-animate');
     points.addEventListener('animationend', () => {
         points.classList.remove('point-animate');
+        renderSquares();
     });
+
 }
 
 function disableSquares() {
@@ -157,9 +159,29 @@ function disableSquares() {
 
     /**
      * document.querySelectorAll returns NodeList but to iterate for it using foreach I need 
-     * to convert the NodeList to array. Array.from(squares) is the function I need
+     * to convert the NodeList to array. 
      */
     Array.from(squares).forEach(square => {
         square.classList.remove('square-active');
     });
+}
+
+function resetTimer() {
+
+    clearInterval(counter);
+
+    let elem = document.getElementById("seconds");
+    elem.innerHTML = defaultSeconds;
+
+    sec = defaultSeconds;
+
+    counter = setInterval(function () {
+        sec--;
+        elem.innerHTML = sec;
+        if (sec == 0) {
+            substractPoint()
+            renderSquares();
+        }
+
+    }, 1000);
 }
