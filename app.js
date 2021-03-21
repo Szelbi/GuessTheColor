@@ -35,7 +35,7 @@ function checkOption(option) {
 
     for (i = 0; i < filterOptions.length; i++) {
         if (filterOptions[i].checked === true)
-            return filterOptions[i].value;
+            return Number(filterOptions[i].value);
     }
 }
 
@@ -60,9 +60,7 @@ function newRound() {
 
 function renderSquares() {
 
-    while (squaresContainer.hasChildNodes()) {
-        squaresContainer.removeChild(squaresContainer.lastChild);
-    }
+    removeSquares();
 
     for (let i = 0; i < options.squares; i++) {
         let square = document.createElement('div');
@@ -72,6 +70,12 @@ function renderSquares() {
         square.style.backgroundColor = getRandomRGB();
         square.addEventListener('click', checkWin);
         squaresContainer.appendChild(square);
+    }
+}
+
+function removeSquares() {
+    while (squaresContainer.hasChildNodes()) {
+        squaresContainer.removeChild(squaresContainer.lastChild);
     }
 }
 
@@ -109,12 +113,12 @@ function checkWin(event) {
 
     if (square.classList.contains('square-active')) {
 
-
         if (square.style.backgroundColor === winingColor) {
 
             square.classList.add('square-correct');
-            disableSquares();
+            // points.addEventListener('animationend', () => {
             addPoint();
+            // });
 
         }
         else {
@@ -140,9 +144,9 @@ function substractPoint() {
     points.innerHTML = Number(points.innerHTML) - 1;
     points.classList.add('poft-animate');
     // points.addEventListener('animationend', () => {
-    points.classList.remove('point-animate');
-    // });
-
+    points.onanimationend = () => {
+        points.classList.remove('point-animate');
+    };
 }
 
 function addPoint() {
@@ -150,10 +154,17 @@ function addPoint() {
     points.innerHTML = Number(points.innerHTML) + 1;
     points.classList.add('point-animate');
     // points.addEventListener('animationend', () => {
-    points.classList.remove('point-animate');
-    newRound();
-    // });
+    points.onanimationend = () => {
+        points.classList.remove('point-animate');
+        clearInterval(counter);
+        disableSquares();
+        newRound();
+    };
+}
 
+function getRound() {
+    let elem = document.querySelector('#round-now');
+    return Number(elem.innerHTML);
 }
 
 function disableSquares() {
@@ -184,7 +195,6 @@ function resetTimer() {
             substractPoint();
             newRound();
         }
-
     }, 1000);
 }
 
@@ -197,6 +207,23 @@ function setAllRounds() {
 function addRound() {
     // new round
     let nowRound = document.getElementById("rounds-now");
-    nowRound.innerHTML = Number(nowRound.innerHTML) + 1;
+    let newRound = Number(nowRound.innerHTML) + 1
+    if (newRound === options.rounds) {
+        nowRound.innerHTML = newRound;
+        gameOver();
+    }
+    else
+        nowRound.innerHTML = newRound;
+}
+
+function gameOver() {
+    clearInterval(counter);
+
+    let text = `Koniec gry!. Wynik: ${getPoints()} punktów.`;
+    alert(text);
+
+    removeSquares();
+
+    return true;
 
 }
