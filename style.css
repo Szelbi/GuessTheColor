@@ -309,7 +309,7 @@ h3 {
   position: relative;
   top: 0;
   left: 25%;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .squares-container .square-wrong::after {
@@ -317,5 +317,5 @@ h3 {
   position: relative;
   top: 0;
   left: 25%;
-  font-size: 5rem;
+  font-size: 3rem;
 }
