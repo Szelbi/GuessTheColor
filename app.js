@@ -141,7 +141,9 @@ function substractPoint() {
 
 function addPoint() {
     let elem = document.querySelector('#points');
+    elem.classList.add
     elem.innerHTML = Number(elem.innerHTML) + 1;
+
 }
 
 function disableSquares() {
