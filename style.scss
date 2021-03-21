@@ -74,7 +74,7 @@ h3 {
 		margin: 0.3rem;
 		display: grid;
 		grid-auto-flow: column;
-		grid-template-columns: repeat(6, minmax(auto, 150px));
+		grid-template-columns: repeat(7, minmax(auto, 150px));
 		grid-gap: 1rem;
 		// padding: 1em; /* NEW */
 
@@ -108,7 +108,7 @@ h3 {
 				cursor: pointer;
 				color: transparentize(white, 0.7);
 				transition: all 0.3s ease;
-				font-size: 0.8rem;
+				font-size: 0.7rem;
 
 				&:hover {
 					color: $primary-color;
@@ -119,7 +119,7 @@ h3 {
 				appearance: none;
 				&:checked + label {
 					font-weight: bold;
-					font-size: 1rem;
+					font-size: 0.9rem;
 					color: $primary-color !important;
 				}
 			}
@@ -135,10 +135,10 @@ h3 {
 		.play-button-icon {
 			color: $primary-color;
 			font-size: 2rem;
-			transition: all 0.3s ease;
+			transition: all 0.3s ease-in-out;
 			&:hover {
 				cursor: pointer;
-				transform: scale(1.5);
+				transform: scale(1.4);
 				// color: rgb(0, 219, 0);
 			}
 		}
@@ -163,20 +163,20 @@ h3 {
 }
 
 .rgb-container {
-	padding: 1rem 0;
+	padding: 0.5rem 0;
 }
 
 .squares-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
-	column-gap: 2em;
-	row-gap: 2em;
-	padding: 1em;
+	column-gap: 1em;
+	row-gap: 1em;
+	padding: 0.5em;
 
 	.square {
-		width: 5rem;
-		height: 5rem;
+		width: 4.5rem;
+		height: 4.5rem;
 		border-radius: 10%;
 		box-shadow: 0 0 15px 9px #2224;
 		// transition: all 0.3s ease;

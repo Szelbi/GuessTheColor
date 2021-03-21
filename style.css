@@ -100,8 +100,8 @@ h3 {
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
-  -ms-grid-columns: (minmax(auto, 150px))[6];
-      grid-template-columns: repeat(6, minmax(auto, 150px));
+  -ms-grid-columns: (minmax(auto, 150px))[7];
+      grid-template-columns: repeat(7, minmax(auto, 150px));
   grid-gap: 1rem;
 }
 
@@ -152,7 +152,7 @@ h3 {
   color: rgba(255, 255, 255, 0.3);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .options-container .filter-container .radiobtn label:hover {
@@ -168,7 +168,7 @@ h3 {
 
 .options-container .filter-container .radiobtn input[type="radio"]:checked + label {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #fffe !important;
 }
 
@@ -182,14 +182,14 @@ h3 {
 .options-container .play-button .play-button-icon {
   color: #fffe;
   font-size: 2rem;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .options-container .play-button .play-button-icon:hover {
   cursor: pointer;
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
 }
 
 .options-container .point-animate {
@@ -228,7 +228,7 @@ h3 {
 }
 
 .rgb-container {
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 .squares-container {
@@ -238,15 +238,15 @@ h3 {
       grid-template-columns: 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
-  -webkit-column-gap: 2em;
-          column-gap: 2em;
-  row-gap: 2em;
-  padding: 1em;
+  -webkit-column-gap: 1em;
+          column-gap: 1em;
+  row-gap: 1em;
+  padding: 0.5em;
 }
 
 .squares-container .square {
-  width: 5rem;
-  height: 5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 10%;
   -webkit-box-shadow: 0 0 15px 9px #2224;
           box-shadow: 0 0 15px 9px #2224;
