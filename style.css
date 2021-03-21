@@ -7,6 +7,28 @@
   margin: 0;
 }
 
+html {
+  font-size: 1.7rem;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 1rem;
+  }
+}
+
 body {
   background: linear-gradient(220deg, #26734d, #265973, #332673);
   background-size: 400% 400%;
@@ -14,7 +36,6 @@ body {
           animation: gradient 30s ease infinite;
   min-height: 100vh;
   color: #fffe;
-  font-size: 1.7rem;
   font-family: "Inconsolata", monospace;
 }
 
@@ -79,9 +100,21 @@ h3 {
   display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
-  -ms-grid-columns: (minmax(auto, 150px))[5];
-      grid-template-columns: repeat(5, minmax(auto, 150px));
-  grid-gap: 1em;
+  -ms-grid-columns: (minmax(auto, 150px))[6];
+      grid-template-columns: repeat(6, minmax(auto, 150px));
+  grid-gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .options-container > ul {
+    grid-gap: 0.5em;
+  }
+}
+
+@media (max-width: 600px) {
+  .options-container > ul {
+    grid-gap: 0.3em;
+  }
 }
 
 .options-container .option-item {
@@ -116,16 +149,14 @@ h3 {
 
 .options-container .filter-container .radiobtn label {
   cursor: pointer;
-  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.3);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  font-size: 0.8rem;
 }
 
 .options-container .filter-container .radiobtn label:hover {
   color: #fffe;
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
 }
 
 .options-container .filter-container .radiobtn input[type="radio"] {
@@ -137,7 +168,7 @@ h3 {
 
 .options-container .filter-container .radiobtn input[type="radio"]:checked + label {
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #fffe !important;
 }
 
@@ -207,15 +238,15 @@ h3 {
       grid-template-columns: 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
-  -webkit-column-gap: 2rem;
-          column-gap: 2rem;
-  row-gap: 2rem;
-  padding: 1rem;
+  -webkit-column-gap: 2em;
+          column-gap: 2em;
+  row-gap: 2em;
+  padding: 1em;
 }
 
 .squares-container .square {
-  width: 120px;
-  height: 120px;
+  width: 5rem;
+  height: 5rem;
   border-radius: 10%;
   -webkit-box-shadow: 0 0 15px 9px #2224;
           box-shadow: 0 0 15px 9px #2224;
