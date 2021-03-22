@@ -1,6 +1,7 @@
 // Selectors
 const radioButtons = document.querySelectorAll(".radiobtn-input");
 const playButton = document.querySelector(".play-button");
+const playContainer = document.querySelector(".play-container");
 
 const squaresContainer = document.querySelector(".squares-container");
 
@@ -55,6 +56,27 @@ function newRound() {
     resetTimer();
     renderSquares();
     setWiningColor();
+}
+
+function togglePlayPause() {
+
+    // playButton
+    let playBtn = document.createElement('button');
+    playBtn.classList.add("play-button", 'button');
+    playBtn.innerHTML = '<i class="play-button-icon button-icon fas fa-play"></i>';
+    playContainer.appendChild(playBtn);
+
+    // pause Button
+    let pauseBtn = document.createElement('button');
+    pauseBtn.classList.add("pause-button", 'button');
+    pauseBtn.innerHTML = '<i class="pause-button-icon button-icon fas fa-pause"></i>';
+    playContainer.appendChild(pauseBtn);
+
+    // reset Button
+    let resetBtn = document.createElement('button');
+    resetBtn.classList.add("reset-button", 'button');
+    resetBtn.innerHTML = '<i class="reset-button-icon button-icon fas fa-undo"></i>';
+    playContainer.appendChild(resetBtn);
 }
 
 
