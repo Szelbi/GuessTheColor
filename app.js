@@ -1,6 +1,8 @@
 // Selectors
 const radioButtons = document.querySelectorAll(".radiobtn-input");
 const playButton = document.querySelector(".play-button");
+const pauseButton = document.querySelector(".pause-button");
+const exitButton = document.querySelector(".exit-button");
 const playPauseContainer = document.querySelector(".play-pause-container");
 
 const squaresContainer = document.querySelector(".squares-container");
@@ -11,10 +13,12 @@ for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener('click', updateOptions);
 }
 playButton.addEventListener('click', playGame);
+pauseButton.addEventListener('click', pauseGame);
+exitButton.addEventListener('click', exitGame);
 
 
 // Variables
-let defaultSeconds = 10;
+const defaultSeconds = 10;
 
 let counter;
 
@@ -22,9 +26,10 @@ let winningColor;
 
 let options = {
     squares: 3,
-    rounds: 10,
+    rounds: 5,
     seconds: 10,
-    playing: false
+    playing: false,
+    paused: false,
 }
 
 
@@ -47,16 +52,29 @@ function updateOptions() {
 }
 
 function playGame() {
-    togglePlayPause()
+    // togglePlayPause()
     setAllRounds();
     newRound();
 }
 
 function pauseGame() {
-    togglePlayPause()
+    // togglePlayPause();
+    clearInterval(counter);
 }
 
-function resetGame() {
+function exitGame() {
+
+    options.playing = false;
+    options.paused = false;
+
+    removeSquares();
+    clearInterval(counter);
+    document.getElementById("seconds").innerHTML = 0;
+    document.getElementById("rgb-result").innerHTML = '';
+    document.getElementById("points").innerHTML = 0;
+    document.getElementById("rounds-now").innerHTML = 0;
+    document.getElementById("rounds-all").innerHTML = 0;
+
 
 }
 
@@ -82,12 +100,12 @@ function togglePlayPause() {
         pauseBtn.addEventListener('click', pauseGame);
         playPauseContainer.appendChild(pauseBtn);
 
-        // reset Button
-        let resetBtn = document.createElement('button');
-        resetBtn.classList.add("reset-button", 'button');
-        resetBtn.innerHTML = '<i class="reset-button-icon button-icon fas fa-undo"></i>';
-        resetBtn.addEventListener('click', resetGame);
-        playPauseContainer.appendChild(resetBtn);
+        // exit Button
+        let exitBtn = document.createElement('button');
+        exitBtn.classList.add("exit-button", 'button');
+        exitBtn.innerHTML = '<i class="exit-button-icon button-icon fas fa-undo"></i>';
+        exitBtn.addEventListener('click', exitGame);
+        playPauseContainer.appendChild(exitBtn);
     }
     else {
         // playButton
