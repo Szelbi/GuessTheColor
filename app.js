@@ -277,13 +277,13 @@ function addRound() {
 }
 
 function gameOver() {
-    clearInterval(counter);
+
 
     let text = `Koniec gry!. Wynik: ${getPoints()} punktów.`;
-    alert(text);
+    console.log(text);
 
-    removeSquares();
+    exitGame();
 
-    return true;
+    // return true;
 
 }
