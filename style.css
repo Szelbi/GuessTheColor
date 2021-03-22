@@ -180,24 +180,32 @@ h3 {
   color: #fffe !important;
 }
 
-.options-container .play-button {
-  padding: 1rem;
+.options-container .button {
+  padding: 0.8rem;
   background-color: transparent;
   outline: none;
   border: none;
 }
 
-.options-container .play-button .play-button-icon {
+.options-container .button .button-icon {
   color: #fffe;
-  font-size: 2rem;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-.options-container .play-button .play-button-icon:hover {
+.options-container .button .button-icon:hover {
   cursor: pointer;
   -webkit-transform: scale(1.4);
           transform: scale(1.4);
+}
+
+.options-container .button .play-button-icon {
+  font-size: 2rem;
+}
+
+.options-container .button .pause-button-icon,
+.options-container .button .reset-button-icon {
+  font-size: 1.7rem;
 }
 
 .options-container .point-animate {

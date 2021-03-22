@@ -147,21 +147,29 @@ h3 {
 		}
 	}
 
-	.play-button {
-		padding: 1rem;
+	.button {
+		padding: 0.8rem;
 		background-color: transparent;
 		outline: none;
 		border: none;
 
-		.play-button-icon {
+		.button-icon {
 			color: $primary-color;
-			font-size: 2rem;
-			transition: all 0.3s ease-in-out;
+			transition: all 0.2s ease;
 			&:hover {
 				cursor: pointer;
 				transform: scale(1.4);
 				// color: rgb(0, 219, 0);
 			}
+		}
+
+		.play-button-icon {
+			font-size: 2rem;
+		}
+
+		.pause-button-icon,
+		.reset-button-icon {
+			font-size: 1.7rem;
 		}
 	}
 
