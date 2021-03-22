@@ -1,7 +1,7 @@
 // Selectors
 const radioButtons = document.querySelectorAll(".radiobtn-input");
 const playButton = document.querySelector(".play-button");
-const playContainer = document.querySelector(".play-container");
+const playPauseContainer = document.querySelector(".play-pause-container");
 
 const squaresContainer = document.querySelector(".squares-container");
 
@@ -10,7 +10,7 @@ const squaresContainer = document.querySelector(".squares-container");
 for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener('click', updateOptions);
 }
-playButton.addEventListener('click', play);
+playButton.addEventListener('click', playGame);
 
 
 // Variables
@@ -24,7 +24,7 @@ let options = {
     squares: 3,
     rounds: 10,
     seconds: 10,
-    play: 'off'
+    playing: false
 }
 
 
@@ -46,9 +46,18 @@ function updateOptions() {
     options.seconds = checkOption('seconds');
 }
 
-function play() {
+function playGame() {
+    togglePlayPause()
     setAllRounds();
     newRound();
+}
+
+function pauseGame() {
+    togglePlayPause()
+}
+
+function resetGame() {
+
 }
 
 function newRound() {
@@ -60,23 +69,34 @@ function newRound() {
 
 function togglePlayPause() {
 
-    // playButton
-    let playBtn = document.createElement('button');
-    playBtn.classList.add("play-button", 'button');
-    playBtn.innerHTML = '<i class="play-button-icon button-icon fas fa-play"></i>';
-    playContainer.appendChild(playBtn);
+    playPauseContainer.textContent = '';
 
-    // pause Button
-    let pauseBtn = document.createElement('button');
-    pauseBtn.classList.add("pause-button", 'button');
-    pauseBtn.innerHTML = '<i class="pause-button-icon button-icon fas fa-pause"></i>';
-    playContainer.appendChild(pauseBtn);
+    options.playing = !options.playing;
 
-    // reset Button
-    let resetBtn = document.createElement('button');
-    resetBtn.classList.add("reset-button", 'button');
-    resetBtn.innerHTML = '<i class="reset-button-icon button-icon fas fa-undo"></i>';
-    playContainer.appendChild(resetBtn);
+    if (options.playing) {
+
+        // pause Button
+        let pauseBtn = document.createElement('button');
+        pauseBtn.classList.add("pause-button", 'button');
+        pauseBtn.innerHTML = '<i class="pause-button-icon button-icon fas fa-pause"></i>';
+        pauseBtn.addEventListener('click', pauseGame);
+        playPauseContainer.appendChild(pauseBtn);
+
+        // reset Button
+        let resetBtn = document.createElement('button');
+        resetBtn.classList.add("reset-button", 'button');
+        resetBtn.innerHTML = '<i class="reset-button-icon button-icon fas fa-undo"></i>';
+        resetBtn.addEventListener('click', resetGame);
+        playPauseContainer.appendChild(resetBtn);
+    }
+    else {
+        // playButton
+        let playBtn = document.createElement('button');
+        playBtn.classList.add("play-button", 'button');
+        playBtn.innerHTML = '<i class="play-button-icon button-icon fas fa-play"></i>';
+        playBtn.addEventListener('click', playGame);
+        playPauseContainer.appendChild(playBtn);
+    }
 }
 
 
