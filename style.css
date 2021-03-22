@@ -200,12 +200,12 @@ h3 {
 }
 
 .options-container .button .play-button-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .options-container .button .pause-button-icon,
-.options-container .button .reset-button-icon {
-  font-size: 1.7rem;
+.options-container .button .exit-button-icon {
+  font-size: 1.2rem;
 }
 
 .options-container .point-animate {
