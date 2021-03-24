@@ -280,7 +280,7 @@ function gameOver() {
 
 
     let text = `Koniec gry!. Wynik: ${getPoints()} punktów.`;
-    console.log(text);
+    alert(text);
 
     exitGame();
 
