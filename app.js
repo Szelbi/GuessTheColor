@@ -14,8 +14,8 @@ for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener('click', updateOptions);
 }
 playButton.addEventListener('click', playGame);
-pauseButton.addEventListener('click', pauseGame);
-exitButton.addEventListener('click', exitGame);
+// pauseButton.addEventListener('click', pauseGame);
+// exitButton.addEventListener('click', exitGame);
 
 
 // Variables
@@ -31,7 +31,7 @@ let options = {
     squares: 3,
     rounds: 5,
     seconds: 20,
-    playing: false,
+    gameOn: false,
     paused: false,
 }
 
@@ -55,14 +55,13 @@ function updateOptions() {
 }
 
 function playGame() {
-    // togglePlayPause()
+    togglePlayReset()
     setAllRounds();
     newRound();
     optionsEnabled(false);
 }
 
 function pauseGame() {
-    // togglePlayPause();
 
     options.paused = !options.paused;
     if (options.paused)
@@ -73,7 +72,9 @@ function pauseGame() {
 
 function exitGame() {
 
-    options.playing = false;
+    togglePlayReset();
+
+    options.gameOn = false;
     options.paused = false;
 
     removeSquares();
@@ -96,13 +97,13 @@ function newRound() {
     setWiningColor();
 }
 
-function togglePlayPause() {
+function togglePlayReset() {
 
     playPauseContainer.textContent = '';
 
-    options.playing = !options.playing;
+    options.gameOn = !options.gameOn;
 
-    if (options.playing) {
+    if (options.gameOn) {
 
         // pause Button
         let pauseBtn = document.createElement('button');
@@ -297,9 +298,7 @@ function gameOver() {
 }
 
 function optionsEnabled(enabled = true) {
-
     for (i = 0; i < radioButtons.length; i++) {
         radioButtons[i].disabled = !enabled;
     }
-
 }
