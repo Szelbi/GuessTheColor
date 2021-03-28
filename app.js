@@ -25,6 +25,8 @@ let counter;
 
 let winningColor;
 
+let timeLeft;
+
 let options = {
     squares: 3,
     rounds: 5,
@@ -60,7 +62,12 @@ function playGame() {
 
 function pauseGame() {
     // togglePlayPause();
-    clearInterval(counter);
+
+    options.paused = !options.paused;
+    if (options.paused)
+        clearInterval(counter);
+    else
+        runTimer(getSeconds());
 }
 
 function exitGame() {
@@ -83,7 +90,7 @@ function newRound() {
     let round = addRound();
     if (round === options.rounds + 1)
         return gameOver();
-    resetTimer();
+    runTimer(options.seconds);
     renderSquares();
     setWiningColor();
 }
@@ -242,14 +249,14 @@ function disableSquares() {
     });
 }
 
-function resetTimer() {
+function runTimer(countFrom) {
 
     clearInterval(counter);
 
     let elem = document.getElementById("seconds");
-    elem.innerHTML = options.seconds;
+    elem.innerHTML = countFrom;
 
-    sec = options.seconds;
+    sec = countFrom;
     let msec = sec * 10;
 
     counter = setInterval(function () {
