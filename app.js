@@ -249,15 +249,21 @@ function resetTimer() {
     elem.innerHTML = options.seconds;
 
     sec = options.seconds;
+    let msec = sec * 10;
 
     counter = setInterval(function () {
-        sec--;
-        elem.innerHTML = sec;
-        if (sec == 0) {
+        msec--;
+        let result = msec.toFixed(3) / 10;
+        let numWithZeroes = result.toLocaleString("en", { useGrouping: false, minimumFractionDigits: 1 });
+
+        elem.innerHTML = numWithZeroes;
+
+        // parseFloat(val.toFixed(2));
+        if (msec == 0) {
             substractPoint();
             newRound();
         }
-    }, 1000);
+    }, 100);
 }
 
 function setAllRounds() {
