@@ -9,6 +9,7 @@ const squaresContainer = document.querySelector(".squares-container");
 
 
 //Event Listeners
+document.addEventListener("DOMContentLoaded", updateOptions);
 for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener('click', updateOptions);
 }
@@ -27,7 +28,7 @@ let winningColor;
 let options = {
     squares: 3,
     rounds: 5,
-    seconds: 10,
+    seconds: 20,
     playing: false,
     paused: false,
 }
