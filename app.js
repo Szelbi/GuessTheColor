@@ -64,10 +64,14 @@ function playGame() {
 function pauseGame() {
 
     options.paused = !options.paused;
-    if (options.paused)
+    if (options.paused) {
+        document.querySelector(".pause-button").innerHTML = '<i class="pause-button-icon button-icon fas fa-play"></i>';
         clearInterval(counter);
-    else
+    }
+    else {
+        document.querySelector(".pause-button").innerHTML = '<i class="pause-button-icon button-icon fas fa-pause"></i>';
         runTimer(getSeconds());
+    }
 }
 
 function exitGame() {
