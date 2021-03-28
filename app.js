@@ -58,6 +58,7 @@ function playGame() {
     // togglePlayPause()
     setAllRounds();
     newRound();
+    optionsEnabled(false);
 }
 
 function pauseGame() {
@@ -76,13 +77,13 @@ function exitGame() {
     options.paused = false;
 
     removeSquares();
+    optionsEnabled(true);
     clearInterval(counter);
     document.getElementById("seconds").innerHTML = 0;
     document.getElementById("rgb-result").innerHTML = '';
     document.getElementById("points").innerHTML = 0;
     document.getElementById("rounds-now").innerHTML = 0;
     document.getElementById("rounds-all").innerHTML = 0;
-
 
 }
 
@@ -293,5 +294,12 @@ function gameOver() {
     let stringEnd = pts == 1 ? 'punkt' : pts == 2 ? 'punkty' : 'punktów';
     alert(`Koniec gry!. Twój wynik to ${pts} ${stringEnd}!`);
     exitGame();
+}
+
+function optionsEnabled(enabled = true) {
+
+    for (i = 0; i < radioButtons.length; i++) {
+        radioButtons[i].disabled = !enabled;
+    }
 
 }
