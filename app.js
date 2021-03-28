@@ -275,8 +275,9 @@ function addRound() {
 
 function gameOver() {
 
-    $pts = getPoints();
-    let text = `Koniec gry!. Twój wynik to ${pts} punktów!`;
+    let pts = getPoints();
+    let stringEnd = pts == 1 ? 'punkt' : pts == 2 ? 'punkty' : 'punktów';
+    alert(`Koniec gry!. Twój wynik to ${pts} ${stringEnd}!`);
     exitGame();
-    alert(text);
+
 }
