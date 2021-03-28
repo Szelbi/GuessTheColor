@@ -79,7 +79,9 @@ function exitGame() {
 }
 
 function newRound() {
-    addRound();
+    let round = addRound();
+    if (round === options.rounds + 1)
+        return gameOver();
     resetTimer();
     renderSquares();
     setWiningColor();
@@ -265,25 +267,16 @@ function setAllRounds() {
 
 
 function addRound() {
-    // new round
     let nowRound = document.getElementById("rounds-now");
     let newRound = Number(nowRound.innerHTML) + 1
-    if (newRound === options.rounds) {
-        nowRound.innerHTML = newRound;
-        gameOver();
-    }
-    else
-        nowRound.innerHTML = newRound;
+    nowRound.innerHTML = newRound;
+    return newRound;
 }
 
 function gameOver() {
 
-
-    let text = `Koniec gry!. Wynik: ${getPoints()} punktów.`;
-    alert(text);
-
+    $pts = getPoints();
+    let text = `Koniec gry!. Twój wynik to ${pts} punktów!`;
     exitGame();
-
-    // return true;
-
+    alert(text);
 }
