@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
 
-$primary-color: #fffe;
+$primary-color: #e5f1ef;
 
 * {
 	padding: 0;
@@ -127,7 +127,7 @@ h3 {
 		.radiobtn {
 			label {
 				cursor: pointer;
-				color: transparentize(white, 0.7);
+				color: transparentize($primary-color, 0.7);
 				transition: all 0.3s ease;
 				font-size: 0.7rem;
 
@@ -141,8 +141,13 @@ h3 {
 				&:checked + label {
 					font-weight: bold;
 					font-size: 0.9rem;
-					color: $primary-color !important;
+					color: $primary-color;
 				}
+			}
+			input:disabled + label {
+				color: transparentize($primary-color, 0.8) !important;
+				// color: red;
+				cursor: default;
 			}
 		}
 	}

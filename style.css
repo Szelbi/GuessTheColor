@@ -35,7 +35,7 @@ body {
   -webkit-animation: gradient 30s ease infinite;
           animation: gradient 30s ease infinite;
   min-height: 100vh;
-  color: #fffe;
+  color: #e5f1ef;
   font-family: "Inconsolata", monospace;
 }
 
@@ -157,14 +157,14 @@ h3 {
 
 .options-container .filter-container .radiobtn label {
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(229, 241, 239, 0.3);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   font-size: 0.7rem;
 }
 
 .options-container .filter-container .radiobtn label:hover {
-  color: #fffe;
+  color: #e5f1ef;
 }
 
 .options-container .filter-container .radiobtn input[type="radio"] {
@@ -177,7 +177,12 @@ h3 {
 .options-container .filter-container .radiobtn input[type="radio"]:checked + label {
   font-weight: bold;
   font-size: 0.9rem;
-  color: #fffe !important;
+  color: #e5f1ef;
+}
+
+.options-container .filter-container .radiobtn input:disabled + label {
+  color: rgba(229, 241, 239, 0.2) !important;
+  cursor: default;
 }
 
 .options-container .button {
@@ -188,7 +193,7 @@ h3 {
 }
 
 .options-container .button .button-icon {
-  color: #fffe;
+  color: #e5f1ef;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
