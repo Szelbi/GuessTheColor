@@ -1,6 +1,7 @@
-/**
- * SELECTORS
- */
+///////////////
+// SELECTORS //
+///////////////
+
 const radioButtons = document.querySelectorAll(".radiobtn-input");
 const playButton = document.querySelector(".play-button");
 const pauseButton = document.querySelector(".pause-button");
@@ -10,9 +11,10 @@ const playPauseContainer = document.querySelector(".play-pause-container");
 const squaresContainer = document.querySelector(".squares-container");
 
 
-/**
- * EVENT LISTENERS
- */
+/////////////////////
+// EVENT LISTENERS //
+/////////////////////
+
 document.addEventListener("DOMContentLoaded", updateOptions);
 for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener('click', updateOptions);
@@ -20,10 +22,14 @@ for (i = 0; i < radioButtons.length; i++) {
 playButton.addEventListener('click', playGame);
 
 
-/**
- * VARIABLES
- */
+
+///////////////
+// VARIABLES //
+///////////////
+
 const defaultSeconds = 10;
+
+const localStorageStr = 'options';
 
 let counter;
 
@@ -31,23 +37,62 @@ let winningColor;
 
 let timeLeft;
 
-
 /**
  * Default options. These could be null by default as well becouse updateOptions() 
  * is run on DOM loaded.
  */
 let options = {
     squares: 3,
-    rounds: 5,
-    seconds: 20,
+    rounds: 10,
+    seconds: 10,
     gameOn: false,
     paused: false,
 }
 
 
+///////////////
+// FUNCTIONS //
+///////////////
+
+
 /**
- * FUNCTIONS 
+ * Function ckecks if localstore exists with all 3 
  */
+function renderOptions() {
+
+    let local = localStorage.getItem(localStorageStr);
+
+    localOptions = local ? JSON.parse(local) : [];
+
+    // sets values from localstorege OR default object {options}
+    options1 = ('squares' in localOptions && 'rounds' in localOptions && 'seconds' in localOptions) ? localOptions : options;
+
+
+    let inputs = document.querySelectorAll('.radiobtn-input');
+
+    Array.from(inputs).forEach(input => {
+
+        input.removeAttribute('checked');
+        // console.log(input);
+        if (input.getAttribute('name') == 'squares' && input.getAttribute('value') == options1.squares)
+            input.setAttribute('checked', true);
+        if (input.getAttribute('name') == 'rounds' && input.getAttribute('value') == options1.rounds)
+            input.setAttribute('checked', true);
+        if (input.getAttribute('name') == 'seconds' && input.getAttribute('value') == options1.seconds)
+            input.setAttribute('checked', true);
+    });
+}
+
+
+function updateOptions() {
+    renderOptions();
+    options.squares = checkOption('squares');
+    options.rounds = checkOption('rounds');
+    options.seconds = checkOption('seconds');
+    localStorage.setItem(localStorageStr, JSON.stringify(options));
+
+}
+
 
 
 /**
@@ -65,12 +110,9 @@ function checkOption(option) {
     }
 }
 
-function updateOptions() {
-    options.squares = checkOption('squares');
-    options.rounds = checkOption('rounds');
-    options.seconds = checkOption('seconds');
-}
-
+/**
+ * Starts the game
+ */
 function playGame() {
     togglePlayReset()
     setAllRounds();
