@@ -1,4 +1,6 @@
-// Selectors
+/**
+ * SELECTORS
+ */
 const radioButtons = document.querySelectorAll(".radiobtn-input");
 const playButton = document.querySelector(".play-button");
 const pauseButton = document.querySelector(".pause-button");
@@ -8,17 +10,19 @@ const playPauseContainer = document.querySelector(".play-pause-container");
 const squaresContainer = document.querySelector(".squares-container");
 
 
-//Event Listeners
+/**
+ * EVENT LISTENERS
+ */
 document.addEventListener("DOMContentLoaded", updateOptions);
 for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener('click', updateOptions);
 }
 playButton.addEventListener('click', playGame);
-// pauseButton.addEventListener('click', pauseGame);
-// exitButton.addEventListener('click', exitGame);
 
 
-// Variables
+/**
+ * VARIABLES
+ */
 const defaultSeconds = 10;
 
 let counter;
@@ -27,6 +31,11 @@ let winningColor;
 
 let timeLeft;
 
+
+/**
+ * Default options. These could be null by default as well becouse updateOptions() 
+ * is run on DOM loaded.
+ */
 let options = {
     squares: 3,
     rounds: 5,
@@ -36,7 +45,15 @@ let options = {
 }
 
 
-// Functions
+/**
+ * FUNCTIONS 
+ */
+
+
+/**
+ * Takes id of form element to check what is checked
+ * Returns value of the checked option
+ */
 function checkOption(option) {
 
     let selector = `#${option}-filter`;
@@ -74,6 +91,9 @@ function pauseGame() {
     }
 }
 
+/**
+ * Used on game ending and on exit button
+ */
 function exitGame() {
 
     togglePlayReset();
@@ -92,6 +112,10 @@ function exitGame() {
 
 }
 
+/**
+ * Runs on every new round. 
+ * @TODO the gameover check works well but "+1" shouldn't be here..
+ */
 function newRound() {
     let round = addRound();
     if (round === options.rounds + 1)
@@ -101,6 +125,10 @@ function newRound() {
     setWiningColor();
 }
 
+/**
+ * When user click play the menu converts to PAUSE and RESET buttons,
+ * when user click resert then menu converts to PLAY button only.
+ */
 function togglePlayReset() {
 
     playPauseContainer.textContent = '';
@@ -133,7 +161,9 @@ function togglePlayReset() {
     }
 }
 
-
+/**
+ * Runs every new round.
+ */
 function renderSquares() {
 
     removeSquares();
@@ -149,12 +179,49 @@ function renderSquares() {
     }
 }
 
+
 function removeSquares() {
     while (squaresContainer.hasChildNodes()) {
         squaresContainer.removeChild(squaresContainer.lastChild);
     }
 }
 
+/**
+ * Function takes number as argument. By default it would be int from options.seconds
+ * but it also allows to resume game paused by user.
+ */
+function runTimer(countFrom) {
+
+    clearInterval(counter);
+
+    let elem = document.getElementById("seconds");
+    elem.innerHTML = countFrom;
+
+    sec = countFrom;
+    let msec = sec * 10;
+
+    counter = setInterval(function () {
+        msec--;
+        let result = msec / 10;
+        /**
+         * using toLocaleString() to output time always with 1 fraction decimal
+         * e.g. number 2 will be 2.0
+         */
+        let numWithZeroes = result.toLocaleString("en", { useGrouping: false, minimumFractionDigits: 1 });
+
+        elem.innerHTML = numWithZeroes;
+
+        if (msec == 0) {
+            substractPoint();
+            newRound();
+        }
+    }, 100);
+}
+
+/**
+ * Taking the rgb color from random square from the rendered ones and writing 
+ * the output on the screen as the color to guess for user.
+ */
 function setWiningColor() {
 
     let squares = squaresContainer.children;
@@ -166,6 +233,7 @@ function setWiningColor() {
     header.innerHTML = winingColor;
 }
 
+
 function getRandomRGB() {
 
     let min = 0;
@@ -176,6 +244,7 @@ function getRandomRGB() {
 
     return `rgb(${red}, ${green}, ${blue})`
 }
+
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -205,15 +274,26 @@ function checkWin(event) {
     }
 }
 
+
 function getSeconds() {
-    let elem = document.querySelector('#seconds');
-    return Number(elem.innerHTML);
+    return Number(document.querySelector('#seconds').innerHTML);
 }
 
+
 function getPoints() {
-    let elem = document.querySelector('#points');
-    return Number(elem.innerHTML);
+    return Number(document.querySelector('#points').innerHTML);
 }
+
+
+function getRound() {
+    return Number(document.querySelector('#round-now').innerHTML);
+}
+
+
+function setAllRounds() {
+    document.getElementById("rounds-all").innerHTML = options.rounds;
+}
+
 
 function substractPoint() {
     let points = document.querySelector('#points');
@@ -224,6 +304,7 @@ function substractPoint() {
         points.classList.remove('point-animate');
     };
 }
+
 
 function addPoint() {
     let points = document.querySelector('#points');
@@ -238,11 +319,10 @@ function addPoint() {
     };
 }
 
-function getRound() {
-    let elem = document.querySelector('#round-now');
-    return Number(elem.innerHTML);
-}
-
+/**
+ * Function that prevents to click on another square when user already 
+ * guessed the correct one. In another way point would be needlessly substracted.
+ */
 function disableSquares() {
     let squares = document.querySelectorAll('.square');
 
@@ -255,52 +335,34 @@ function disableSquares() {
     });
 }
 
-function runTimer(countFrom) {
-
-    clearInterval(counter);
-
-    let elem = document.getElementById("seconds");
-    elem.innerHTML = countFrom;
-
-    sec = countFrom;
-    let msec = sec * 10;
-
-    counter = setInterval(function () {
-        msec--;
-        let result = msec.toFixed(3) / 10;
-        let numWithZeroes = result.toLocaleString("en", { useGrouping: false, minimumFractionDigits: 1 });
-
-        elem.innerHTML = numWithZeroes;
-
-        // parseFloat(val.toFixed(2));
-        if (msec == 0) {
-            substractPoint();
-            newRound();
-        }
-    }, 100);
-}
-
-function setAllRounds() {
-    let allRounds = document.getElementById("rounds-all");
-    allRounds.innerHTML = options.rounds;
-}
-
-
+/**
+ * Writing next round to the #rounds-now elem
+ * Returns number of round already added.
+ */
 function addRound() {
     let nowRound = document.getElementById("rounds-now");
-    let newRound = Number(nowRound.innerHTML) + 1
+    let newRound = Number(nowRound.innerHTML) + 1;
+
     nowRound.innerHTML = newRound;
     return newRound;
 }
 
+/**
+ * Alert output for user when the game ends.
+ * Could be prettier tbh..
+ */
 function gameOver() {
 
     let pts = getPoints();
     let stringEnd = pts == 1 ? 'punkt' : pts == 2 ? 'punkty' : 'punktów';
-    alert(`Koniec gry!. Twój wynik to ${pts} ${stringEnd}!`);
+    alert(`Koniec gry! Twój wynik to ${pts} ${stringEnd} z ${options.rounds} możliwych!`);
     exitGame();
 }
 
+/**
+ * Adds disabled property to input elemen.
+ * :disabled property is handled in scss.
+ */
 function optionsEnabled(enabled = true) {
     for (i = 0; i < radioButtons.length; i++) {
         radioButtons[i].disabled = !enabled;
