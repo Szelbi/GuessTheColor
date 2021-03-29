@@ -12,15 +12,15 @@ $primary-color: #e5f1ef;
 html {
 	font-size: 1.7rem;
 	@media (max-width: 1200px) {
-		font-size: 1.4rem;
+		font-size: 1.5rem;
 	}
 
 	@media (max-width: 900px) {
-		font-size: 1.2rem;
+		font-size: 1.35rem;
 	}
 
 	@media (max-width: 600px) {
-		font-size: 1rem;
+		font-size: 1.2rem;
 	}
 }
 
@@ -57,13 +57,7 @@ h3 {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	// border: 1px solid orange;
 }
-
-// .options-bar {
-// 	width: 100%;
-// 	background-color: hsl(152, 10%, 70%);
-// }
 
 .options-container {
 	display: flex;
@@ -77,12 +71,6 @@ h3 {
 		grid-auto-flow: column;
 		grid-template-columns: repeat(7, minmax(auto, 150px));
 		grid-template-rows: auto;
-		// grid-template-columns: repeat(3, minmax(auto, 150px));
-		// grid-template-rows: repeat(3, minmax(auto, 150px));
-		grid-template-areas:
-			". . ."
-			"none . none"
-			". . .";
 
 		// grid-template-areas:
 		// 	"squares-f rounds-f seconds-f"
@@ -95,7 +83,7 @@ h3 {
 			// grid-gap: 0.5em;
 			grid-auto-flow: row;
 			grid-template-columns: repeat(3, minmax(auto, 6rem));
-			grid-template-rows: repeat(3, minmax(auto, 4rem));
+			// grid-template-rows: repeat(3, minmax(auto, 4rem));
 			// grid-template-rows: auto;
 			grid-template-areas:
 				"squares-f rounds-f seconds-f"
@@ -146,7 +134,6 @@ h3 {
 			}
 			input:disabled + label {
 				color: transparentize($primary-color, 0.8) !important;
-				// color: red;
 				cursor: default;
 			}
 		}
@@ -164,7 +151,6 @@ h3 {
 			&:hover {
 				cursor: pointer;
 				transform: scale(1.4);
-				// color: rgb(0, 219, 0);
 			}
 		}
 
@@ -179,7 +165,6 @@ h3 {
 	}
 
 	.point-animate {
-		// display: inline-block;
 		animation: grow 0.5s ease-in-out;
 
 		@keyframes grow {
@@ -213,16 +198,12 @@ h3 {
 		height: 4.5rem;
 		border-radius: 10%;
 		box-shadow: 0 0 15px 9px #2224;
-		// transition: all 0.3s ease;
 	}
 
 	.square-active {
-		// transition: transform 0.3s ease-in-out;
 		&:hover {
-			// transform: scale(1.1);
 			cursor: pointer;
 			animation: shake 0.3s linear;
-			// transform: rotate(90deg);
 		}
 
 		@keyframes shake {
